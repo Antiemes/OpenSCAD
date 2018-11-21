@@ -13,6 +13,8 @@ screw_offs=width/4*1.3;
 
 screw_dist=76;
 
+back=3;
+
 module screwhole()
 {
   cylinder(d=screw_dia, h=thickness+1, center=true);
@@ -52,7 +54,7 @@ rotate([0, 0, 45])
     translate([50+thickness/2, 0, 0]) rotate([90, 0, 0]) screwhole2();
   }
   translate([0, 18.8/2+thickness/2, 0]) cube([thickness, 18.8+thickness*2, height], center=true);
-  translate([10+thickness/2, 18.8+thickness, 0]) cube([20+thickness, thickness, height], center=true);
+  #translate([back/2+thickness/2, 18.8+thickness, 0]) cube([back, thickness, height], center=true);
 }
 
 translate([0, -wall_dist/2, 0]) cube([thickness, wall_dist, height], center=true);
