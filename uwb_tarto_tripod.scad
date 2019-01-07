@@ -15,6 +15,9 @@ screw_dist=76;
 
 back=25;
 
+base_width=43.25;
+base_height=9.1;
+
 module screwhole()
 {
   cylinder(d=screw_dia, h=thickness+1, center=true);
@@ -27,13 +30,21 @@ module screwhole2()
   //translate([0, 0, thickness/2]) mirror([0, 0, 1]) cylinder(d2=0, d1=screw_head, h=screw_head*2/3, center=false);
 }
 
+pcb_thickness=1.6;
+pcb_length=50;
+pcb_height=50;
+cover_thickness=5;
+module pcb()
+{
+#translate([0, 0, -base_height/2+pcb_height/2+cover_thickness/2-pcb_thickness])
+  cube([pcb_length, pcb_thickness, pcb_height], center=true);
+}
+
 //Tripod mount
-base_width=43.25;
 translate([0, -20-base_width/2, 0])
 {
   union()
   {
-  base_height=9.1;
   base_inset=4.1;
   base_cutout = 0.8;
   
@@ -64,3 +75,17 @@ translate([0, -20-base_width/2, 0])
     cube([base_width-base_inset*2, base_width-base_inset*2, height]);
   }
 }
+
+//PCB part
+cover_height=10;
+
+%translate([0, 0, cover_height/2+base_height/2])
+  difference()
+  {
+    union()
+    {
+      cube([pcb_length, cover_thickness, cover_height], center=true);
+      translate([pcb_length/2, 0, 0]) cube([cover_height, cover_height, cover_thickness], center=true);
+    }
+    pcb();
+  }
