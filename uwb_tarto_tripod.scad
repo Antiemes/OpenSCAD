@@ -4,7 +4,7 @@ wall_dist=150;
 thickness=10;
 width=80;
 width2=100;
-height=30;
+height=20;
 
 screw_dia=4;
 screw_dia2=5;
@@ -15,7 +15,7 @@ screw_dist=76;
 
 back=25;
 
-base_width=43.25;
+base_width=43.4;
 base_height=9.1;
 
 module screwhole()
@@ -30,13 +30,13 @@ module screwhole2()
   //translate([0, 0, thickness/2]) mirror([0, 0, 1]) cylinder(d2=0, d1=screw_head, h=screw_head*2/3, center=false);
 }
 
-pcb_thickness=1.6;
-pcb_length=50;
+pcb_thickness=1.5;
+pcb_length=51.25;
 pcb_height=50;
 cover_thickness=5;
 cover_height=10;
 cutout_height=5;
-cutout_width=30;
+cutout_width=44;
 base_inset=4.1;
 
 module pcb()
@@ -87,7 +87,7 @@ translate([0, -20-base_width/2, 0])
 
 module support()
 {
-  support_height=15;
+  support_height=9.5;
   rotate([90, 0, 0]) linear_extrude(height=cover_thickness, center=true) polygon(points=[[0, 0], [0, -support_height], [(pcb_length+cover_thickness-base_width+base_inset*2)/2, 0]]);
 }
 
