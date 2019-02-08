@@ -1,7 +1,7 @@
 $fn=100;
 
 wall_dist=150;
-thickness=5;
+thickness=4;
 width=80;
 width2=100;
 height=20;
@@ -57,8 +57,15 @@ translate([0, 0, -base_height/2+pcb_height/2+cover_thickness/2-pcb_thickness])
   cube([pcb_length, pcb_thickness, pcb_height], center=true);
 }
 
+module support()
+{
+  support_height=9.5;
+  rotate([90, 0, 0]) linear_extrude(height=cover_thickness, center=true) polygon(points=[[0, 0], [0, -support_height], [(pcb_length+cover_thickness-base_width+base_inset*2)/2, 0]]);
+}
+
+
 //PCB part
-translate([0, cover_thickness/2, cover_height/2+base_height/2+cutout_height-height])
+translate([0, cover_thickness/2, cover_height/2+base_height/2+cutout_height-cutout_height])
 {
   difference()
   {
@@ -66,6 +73,12 @@ translate([0, cover_thickness/2, cover_height/2+base_height/2+cutout_height-heig
     translate([0, 0, (cover_height-cutout_height)/2]) cube([cutout_width, cover_thickness+1, cutout_height], center=true);
     pcb();
   }
+  hull()
+  {
+    translate([base_width/2-base_inset, 0, -5]) support();
+    mirror([1, 0, 0]) translate([base_width/2-base_inset, 0, -5]) support();
+  }
+  translate([0, -2.5, -height+5.5]) rotate([0, 90, 0]) linear_extrude(height=base_width-base_inset*2, center=true) polygon(points=[[0, 0], [0, cover_thickness], [5, 0]]);
 }
 
 //Screw mount part
@@ -75,4 +88,5 @@ translate([0, -thickness/2, 0]) difference()
   translate([screw_dist/2, 0, 0]) rotate([-90, 0, 0]) screwhole2();
   translate([-screw_dist/2, 0, 0]) rotate([-90, 0, 0]) screwhole2();
 }
+
 
