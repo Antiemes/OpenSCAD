@@ -4,7 +4,7 @@ wall_dist=150;
 thickness=6;
 width=80;
 width2=100;
-height=20;
+height=30;
 
 screw_dia=4;
 screw_dia2=5;
@@ -65,7 +65,7 @@ module support()
 
 
 //PCB part
-translate([0, 0, cover_height/2+base_height/2+cutout_height-cutout_height+1])
+translate([0, 0, cover_height/2+base_height/2+cutout_height-cutout_height+1+5])
 {
   difference()
   {
@@ -81,7 +81,7 @@ translate([0, 0, 0]) difference()
   cube([width2, thickness, height], center=true);
   translate([screw_dist/2, 0, 0]) rotate([-90, 0, 0]) screwhole2();
   translate([-screw_dist/2, 0, 0]) rotate([-90, 0, 0]) screwhole2();
-  translate([0, 0, cover_height/2+base_height/2+cutout_height-cutout_height+1]) pcb();
+  translate([0, 0, cover_height/2+base_height/2+cutout_height-cutout_height+1+5]) pcb();
 }
 
 
