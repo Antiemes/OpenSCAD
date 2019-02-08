@@ -1,7 +1,7 @@
 $fn=100;
 
 wall_dist=150;
-thickness=10;
+thickness=5;
 width=80;
 width2=100;
 height=20;
@@ -30,8 +30,6 @@ module screwhole2()
 {
   cylinder(d=screw_dia2, h=thickness+1, center=true);
 }
-
-
 
 module screwhole()
 {
