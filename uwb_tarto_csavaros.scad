@@ -100,6 +100,6 @@ translate([0, 0, cover_height/2+base_height/2+cutout_height])
     translate([0, 0, (cover_height-cutout_height)/2]) cube([cutout_width, cover_thickness+1, cutout_height], center=true);
     pcb();
   }
-  translate([base_width/2-base_inset, 0, -5]) support();
-  mirror([1, 0, 0]) translate([base_width/2-base_inset, 0, -5]) support();
+  //translate([base_width/2-base_inset, 0, -5]) support();
+  //mirror([1, 0, 0]) translate([base_width/2-base_inset, 0, -5]) support();
 }
