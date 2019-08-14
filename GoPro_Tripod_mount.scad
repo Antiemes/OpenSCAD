@@ -1,3 +1,5 @@
+use <gopro_mounts_mooncactus.scad>
+
 // Phone width in mm (iPhone4/S=9.3, iPhone5=7.6, iPhone6=7.05)
 //phone_width=9.5; // XPeria Arc
 phone_width=15; // Galaxy Mini with rubber case
@@ -24,6 +26,7 @@ base_width_2 = base_width + base_cutout;
 
 phone_width_2 = phone_width + 0.05; // add a tiny bit of extra so phone can slide in
 
+translate([-base_width_2/2, -base_width_2/2, 0])
 union() {
 
 // base
@@ -46,10 +49,12 @@ intersection() {
 }
 
 // phone holder
-translate([base_inset,base_width-base_width/2-holder_width-phone_width/2,base_height]) 
-	cube([base_width-base_inset*2,holder_width,holder_height]);
-translate([base_inset,base_width-base_width/2+phone_width/2,base_height])
-	cube([base_width-base_inset*2,holder_width,holder_height]);
-
+//translate([base_inset,base_width-base_width/2-holder_width-phone_width/2,base_height]) 
+//	cube([base_width-base_inset*2,holder_width,holder_height]);
+//translate([base_inset,base_width-base_width/2+phone_width/2,base_height])
+//	cube([base_width-base_inset*2,holder_width,holder_height]);
+//
 }
+
+translate([0, 0, 20]) rotate([-90, 0, 0]) gopro_connector("triple");
 
