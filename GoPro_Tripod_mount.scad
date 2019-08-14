@@ -1,5 +1,7 @@
 use <gopro_mounts_mooncactus.scad>
 
+$fn=120;
+
 // Phone width in mm (iPhone4/S=9.3, iPhone5=7.6, iPhone6=7.05)
 //phone_width=9.5; // XPeria Arc
 phone_width=15; // Galaxy Mini with rubber case
