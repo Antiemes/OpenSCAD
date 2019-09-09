@@ -36,8 +36,8 @@ translate([0, -thickness/2], 0) difference()
     cube([width, thickness, height], center=true);
     translate([0, 0, width/2]) cube([height, thickness, width], center=true);
   }
-  translate([screw_offs, 0, 0]) rotate([90, 0, 0]) screwhole();
-  translate([-screw_offs, 0, 0]) rotate([90, 0, 0]) screwhole();
+  translate([screw_offs, 0, 0]) rotate([-90, 0, 0]) screwhole();
+  translate([-screw_offs, 0, 0]) rotate([-90, 0, 0]) screwhole();
 }
 
 //   SZEKRENYHEZ ROGZITHETO
