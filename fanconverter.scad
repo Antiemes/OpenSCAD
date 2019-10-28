@@ -6,36 +6,52 @@ $fn=96;
 
 difference()
 {
-  hull()
+  union()
   {
-    for (r=[0:90:359])
+    difference()
     {
-      rotate([0, 0, r]) translate([35, 35, 0]) cylinder(h=6, d=10, center=true);
+      hull()
+      {
+        for (r=[0:90:359])
+        {
+          rotate([0, 0, r]) translate([35, 35, 0]) cylinder(h=6, d=10, center=true);
+        }
+          //cube([80, 80, 6], center=true);
+          //cylinder(h=6, d=75, center=true);
+        for (r=[0:90:359])
+        {
+          rotate([0, 0, r]) translate([40, 40, 17]) cylinder(h=6, d=20, center=true);
+        }
+      }
+        
+      for (r=[0:90:359])
+      {
+        rotate([0, 0, r]) translate([35, 35, 0]) cylinder(h=6, d=3.5, center=true);
+      }
+      translate([0, 0, 20])
+        for (r=[0:90:359])
+        {
+          rotate([0, 0, r]) translate([40, 40, 0]) cylinder(h=6, d=3.5, center=true);
+        }
     }
-      //cube([80, 80, 6], center=true);
-      //cylinder(h=6, d=75, center=true);
-    for (r=[0:90:359])
-    {
-      rotate([0, 0, r]) translate([40, 40, 17]) cylinder(h=6, d=20, center=true);
-    }
+    translate([0, 0, 20])
+      difference()
+      {
+        cube([100, 100, 6], center=true);
+        //cylinder(h=6, d=95, center=true);
+      }
   }
-    
-  for (r=[0:90:359])
+
+hull()
+{
+  translate([0, 0, -3]) linear_extrude(height=1) circle(d=75);
+  translate([0, 0, 22]) linear_extrude(height=1) minkowski()
   {
-    rotate([0, 0, r]) translate([35, 35, 0]) cylinder(h=6, d=3.5, center=true);
+    circle(d=20);
+    square(size=70, center=true);
   }
-  translate([0, 0, 20])
-    for (r=[0:90:359])
-    {
-      rotate([0, 0, r]) translate([40, 40, 0]) cylinder(h=6, d=3.5, center=true);
-    }
 }
-translate([0, 0, 20])
-  difference()
-  {
-    cube([100, 100, 6], center=true);
-    //cylinder(h=6, d=95, center=true);
-  }
+}
 
 //difference()
 //{
