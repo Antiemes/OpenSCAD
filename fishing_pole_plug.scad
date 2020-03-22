@@ -7,7 +7,7 @@ cut=15;
 
 soft=10;
 
-thread_depth=2;
+thread_depth=1;
 thread_length=10;
 
 intersection()
@@ -31,11 +31,11 @@ intersection()
 	
 		union()
 		{
-			for(angle=[0:90:359])
+			for(angle=[0:60:359])
 				rotate([0, 0, angle])
 				{
 					translate([0, 0, height-cut/2])
-						linear_extrude(height=cut, center=true, twist=-360)
+						linear_extrude(height=cut, center=true, twist=-45)
 							translate([id/2-thread_depth/2+0.5, 0, 0])
 								square([thread_depth, thread_length], center=true);
 				}
