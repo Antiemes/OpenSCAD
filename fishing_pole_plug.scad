@@ -7,8 +7,8 @@ cut=15;
 
 soft=10;
 
-thread_depth=1;
-thread_length=10;
+thread_depth=2.5;
+thread_length=5;
 
 intersection()
 {
