@@ -17,7 +17,7 @@ base_x=65; //Doboz szelessege
 base_y=100;
 encl_thick=2; //Doboz anyaganak vastagsaga
 
-usb_x=18; //USB tolto x offset
+usb_x=20; //USB tolto x offset
 huzzah_x=-10; //Huzzah tolto x offset
 
 module battery()
@@ -67,8 +67,8 @@ translate([huzzah_x, base_y-4-encl_thick, encl_thick])
   translate([-33.2/2, 0, 0]) foo2();
   translate([33.2/2, -20.5, 0]) foo2();
   translate([-33.2/2, -20.5, 0]) foo2();
-	#translate([0, -10.5, 2.5]) cube([38.4, 25.5, 1.6], center=true);
+	//translate([0, -10.5, 2.5]) cube([38.4, 25.5, 1.6], center=true);
 }
 
 
-#translate([0, 2, 2]) battery();
+//translate([0, 2, 2]) battery();
