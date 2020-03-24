@@ -5,7 +5,7 @@ od=30.4+4;
 height=25;
 cut=15;
 
-soft=6;
+soft=8;
 
 thread_depth=2.5;
 
@@ -18,7 +18,7 @@ module shaper(dadd)
 	union()
 	{
 		translate([0, 0, height-soft])
-			cylinder(d2=id2*0.95+dadd, d1=id2+dadd, h=soft);
+			cylinder(d2=id*0.92+dadd, d1=id+dadd, h=soft);
 		cylinder(d=od+dadd, h=height-soft);
 	}
 }
@@ -28,6 +28,7 @@ minkowski()
 	cylinder(d=od-grip_soft, h=(height-cut)/2, $fn=6);
 	cylinder(d=grip_soft, h=(height-cut)/2);
 }
+
 intersection()
 {
 	cylinder(d=id2, h=height);
@@ -42,9 +43,10 @@ intersection()
 		{
 			translate([0, 0, height-cut/2])
 				linear_extrude(height=cut, center=true, twist=-45)
-					translate([id2/2-thread_depth+0.5, 0, 0])
+					translate([id/2-thread_depth, 0, 0])
 						circle(r=thread_depth, center=true);
 		}
 	}
 	shaper(thread_depth-1.5);
 }
+
