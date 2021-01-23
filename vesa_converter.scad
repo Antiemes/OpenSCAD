@@ -56,7 +56,7 @@ module vesa()
 		}
 		for(r=[0:90:359])
 		{
-			rotate([0, 0, r]) translate([50, 50, 0]) cylinder(d=5, h=10);
+			rotate([0, 0, r]) translate([50, 50, 0]) cylinder(d=4.5, h=15);
 		}
 		
 		for(r2=[0:90:359])
