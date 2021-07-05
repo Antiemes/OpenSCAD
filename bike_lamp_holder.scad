@@ -14,16 +14,16 @@ module upper()
 					{
 						union()
 						{
-							cylinder(d=34, h=20, center=true, $fn=96);
-							cube([8, 50, 20], center=true);
+							cylinder(d=34, h=16, center=true, $fn=96);
+							cube([8, 50, 16], center=true);
 						}
-						sphere(r=2, $fn=15);
+						sphere(r=2, $fn=5);
 					}
 					cylinder(d=26, h=25, center=true, $fn=96);
 				}
 				translate([0, -35, -25]) cube([30, 70, 50]);
 			}
-			for (x=[-22, 22]) for (y=[-6, 6])
+			for (x=[-22, 22]) for (y=[-4, 4])
 			{
 				translate([-1, x, y]) rotate([0, 90, 0]) cylinder(d=3.2, h=10, $fn=32);
 			}
@@ -45,27 +45,28 @@ module lower()
 					{
 						union()
 						{
-							cylinder(d=34, h=20, center=true, $fn=96);
-							cube([50, 50, 20], center=true);
+							cylinder(d=34, h=16, center=true, $fn=96);
+							cube([50, 50, 16], center=true);
 						}
-						sphere(r=2, $fn=15);
+						sphere(r=2, $fn=5);
 					}
 					cylinder(d=26, h=25, center=true, $fn=96);
 				}
 				mirror([1, 0, 0]) translate([0, -35, -25]) cube([30, 70, 50]);
 			}
-			for (x=[-22, 22]) for (y=[-6, 6])
+			for (x=[-22, 22]) for (y=[-4, 4])
 			{
 				translate([1, x, y]) rotate([0, -90, 0]) cylinder(d=3.2, h=20, $fn=32);
 				translate([-10, x, y]) rotate([0, -90, 0]) cylinder(d=6.5, h=20, $fn=32);
 			}
 			//translate([-28, -35, -15]) cube([10, 70, 30]);
 			translate([-32, 0, 0]) rotate([90, 0, 0]) scale([1, 1, 32/31]) cylinder(d=31, h=70, center=true);
+			for (x=[-15, 15]) translate([-13, x, 0]) cube([2, 4, 30], center=true);
 		}
 	}
 }
 
-upper();
-%lower();
+//upper();
+lower();
 
-translate([0, 0, -32]) rotate([90, 0, 0]) scale([1, 1, 32/31]) cylinder(d=31, h=70, center=true);
+//translate([0, 0, -32]) rotate([90, 0, 0]) scale([1, 1, 32/31]) cylinder(d=31, h=70, center=true);
