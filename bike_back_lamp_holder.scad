@@ -3,8 +3,8 @@ xsize = 100;
 ysize = 35;
 depth = 40;
 $fn = 96;
-sw_x = 25;
-sw_y = 14;
+sw_x = 19.8;
+sw_y = 13;
 
 module body()
 {
@@ -77,7 +77,29 @@ module switch()
 
 module battery()
 {
-  translate([-8, 0, depth / 2]) rotate([0, 90, 0]) cylinder(d=18, h=65, center=true);
+  translate([-8, 8, depth / 2 - 3]) rotate([0, 90, 0]) cylinder(d=18, h=65+5, center=true);
+}
+
+module zip()
+{
+  for (zo=[-7.5, 7.5])
+  {
+    for (xo=[-25, 25])
+    {
+      translate([xo - 8, ysize / 2, depth / 2 - 3 + zo]) cube([4, 10, 1.5], center=true);
+    }
+  }
+}
+
+module notch()
+{
+  for (zo = [5, depth - 5])
+  {
+    for (xo = [-30, 0, 30])
+    {
+      translate([xo, -ysize/2 + 2.5, zo]) rotate([0, 90, 0]) cylinder(d=2, h=5, center=true);
+    }
+  }
 }
 
 difference()
@@ -87,6 +109,8 @@ difference()
   inner();
   drillholes();
   switch();
+  battery();
+  zip();
 }
 
-#battery();
+notch();
