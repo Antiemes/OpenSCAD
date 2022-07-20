@@ -39,15 +39,15 @@ module leds()
   }
 }
 
-module inner()
+module inner(offs)
 {
   hull()
   {
-    for (zo=[8, depth-8])
+    for (zo=[8-offs, depth-8+offs])
     {
       for (xom=[-1, 1])
       {
-        translate([xom*(xsize/2-8), 0, zo])
+        translate([xom*(xsize/2-8+offs), 0, zo])
         {
           rotate([90, 0, 0]) translate([0, 0, 3]) cylinder(d=6, h=ysize, center=true);
         }
@@ -91,26 +91,57 @@ module zip()
   }
 }
 
-module notch()
+module notch(offs)
 {
   for (zo = [5, depth - 5])
   {
     for (xo = [-30, 0, 30])
     {
-      translate([xo, -ysize/2 + 2.5, zo]) rotate([0, 90, 0]) cylinder(d=2, h=5, center=true);
+      translate([xo, -ysize/2 + 2.5, zo]) rotate([0, 90, 0]) cylinder(d=2+offs, h=5, center=true);
     }
   }
 }
 
-difference()
+module cutout()
 {
-  body();
-  leds();
-  inner();
-  drillholes();
-  switch();
-  battery();
-  zip();
+  for (xo = [-15, 15])
+  {
+    translate([xo, -ysize/2 + 2.5, 5]) rotate([90, 0, 0]) cylinder(d=8, h=10, center=true);
+  }
+
 }
 
-notch();
+module lamp()
+{
+  difference()
+  {
+    body();
+    leds();
+    inner(0);
+    drillholes();
+    switch();
+    battery();
+    zip();
+  }
+  
+  notch(0);
+}
+
+
+module cover()
+{
+  difference()
+  {
+    intersection()
+    {
+      inner(-0.2);
+      body();
+      translate([-xsize/2, -ysize/2, 0]) cube([xsize, 5, depth]);
+    }
+    notch(0.2);
+    cutout();
+  }
+}
+
+//lamp();
+cover();
